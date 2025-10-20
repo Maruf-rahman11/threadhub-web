@@ -7,6 +7,7 @@ import { FaBell } from 'react-icons/fa';
 import { useQuery } from '@tanstack/react-query';
 import Swal from 'sweetalert2';
 import useAxios from '../Hooks/useAxios';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
     const { user, signOutUser, loading } = use(AuthContext);
@@ -21,17 +22,17 @@ const Navbar = () => {
         },
     });
 
-    
-  const handleClick = () => {
-    Swal.fire({
-      icon: "info",
-      title: `
+
+    const handleClick = () => {
+        Swal.fire({
+            icon: "info",
+            title: `
     Check out announcement section 
     <span style="display:block; font-size: 2rem; margin-top: 10px;">⬇️</span>
   `,
-      showConfirmButton: true,
-    });
-  };
+            showConfirmButton: true,
+        });
+    };
 
     const success = () => toast.success("Logged out Successful", { autoClose: 2000 });
 
@@ -54,7 +55,7 @@ const Navbar = () => {
 
     return (
         <div>
-            <div id="navbar" className="navbar bg-[#4e5dfe] shadow-sm">
+            <div id="navbar" className="navbar fixed top-0 left-0 w-full z-50 bg-[#4e5dfe] shadow-sm">
 
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -69,6 +70,12 @@ const Navbar = () => {
                             <NavLink to='/'><li className='font-semibold cursor-pointer text-white'>Home</li></NavLink>
                             <NavLink to='/membership'><li className='font-semibold cursor-pointer text-white'>Membership</li></NavLink>
                             <NavLink to='/dashboard'><li className='font-semibold cursor-pointer text-white'>Dashboard</li></NavLink>
+                         { user && <NavLink to='/dashboard/addPost'><li className="font-semibold cursor-pointer text-white">Add Post</li></NavLink>
+                          
+                        }
+                         { user && <NavLink to='/dashboard/myPosts'><li className="font-semibold cursor-pointer text-white">My Posts</li></NavLink>
+                          
+                        }
                         </ul>
                     </div>
                     <img className='w-[140px] h-[60px]' src={Thread} alt="" />
@@ -79,10 +86,17 @@ const Navbar = () => {
                         <NavLink to='/'><li className="font-semibold cursor-pointer text-white">Home</li></NavLink>
                         <NavLink to='/membership'><li className="font-semibold cursor-pointer text-white">Membership</li></NavLink>
                         <NavLink to='/dashboard'><li className="font-semibold cursor-pointer text-white">Dashboard</li></NavLink>
+                        { user && <NavLink to='/dashboard/addPost'><li className="font-semibold cursor-pointer text-white">Add Post</li></NavLink>
+                          
+                        }
+                         { user && <NavLink to='/dashboard/myPosts'><li className="font-semibold cursor-pointer text-white">My Posts</li></NavLink>
+                          
+                        }
                     </ul>
                 </div>
 
                 <div className="navbar-end flex gap-2">
+                <div> <ThemeToggle></ThemeToggle></div>
                     {user ? (
                         <div className="flex items-center gap-2">
                             <div className="relative cursor-pointer" onClick={handleClick}>

@@ -7,7 +7,10 @@ const HomeLayout = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <Outlet></Outlet>
+            <div className='mt-18'>
+                <Outlet></Outlet>
+            </div>
+            
             <Footer></Footer>
         </div>
     );

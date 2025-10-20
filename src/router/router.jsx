@@ -18,6 +18,7 @@ import AddAnnouncements from '../Pages/Home/AddAnnouncements';
 import AllAnnouncements from '../Pages/Home/AllAnnouncements';
 import Forbidden from '../Pages/Shared/Forbidden';
 import AdminRoute from '../Routes/AdminRoute';
+import ErrorPage from '../Pages/Shared/ErrorPage';
 
 const router = createBrowserRouter([
     {
@@ -94,7 +95,12 @@ const router = createBrowserRouter([
             path: '/dashboard/allAnnouncements',
             element: <AdminRoute><AllAnnouncements></AllAnnouncements></AdminRoute> 
           }
+          
         ]
+      },
+      {
+        path : '*',
+        Component : ErrorPage,
       }
       
 ]);

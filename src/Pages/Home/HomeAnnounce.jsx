@@ -18,7 +18,7 @@ const HomeAnnounce = () => {
 
     return (
         <section className="max-w-6xl mx-auto mt-12 px-6">
-            <h2 className="text-3xl font-bold mb-6 text-center text-primary">📢 Announcements</h2>
+            <h2 className="text-4xl font-bold mb-6 text-center">📢 Announcements</h2>
             
             {announcements.length === 0 ? (
                 <p className="text-center text-gray-500 italic">No announcements yet.</p>

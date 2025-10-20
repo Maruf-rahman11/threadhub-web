@@ -8,6 +8,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
 
+if (!localStorage.getItem("theme")) {
+  document.documentElement.setAttribute("data-theme", "light");
+  localStorage.setItem("theme", "light");
+}
+
 createRoot(document.getElementById('root')).render(
   <QueryClientProvider client={queryClient}>
     <AuthProvider >

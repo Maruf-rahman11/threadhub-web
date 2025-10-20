@@ -34,14 +34,16 @@ const HomePosts = () => {
     keepPreviousData: true,
   });
 
-  if (isLoading) return <p className="text-center mt-10">Loading posts...</p>;
+  if (isLoading) return <div className="min-h-screen flex justify-center items-center">
+  <span className="loading loading-spinner loading-xl"></span>
+</div>;
   if (isError) return <p className="text-center mt-10">Error loading posts</p>;
 
   const posts = data?.posts || [];
   const totalPages = data?.totalPages || 1;
 
   return (
-    <div className="max-w-6xl mx-auto mt-10 px-4">
+    <div className="max-w-6xl mx-auto mt-16 px-4">
       {/* Hero Banner with Search */}
       <div
         className="hero min-h-96 rounded-xl mb-8"
@@ -111,7 +113,7 @@ const HomePosts = () => {
                 </div>
               </div>
               <h4 className="text-lg font-bold mb-2">{post.title}</h4>
-              <p className="text-gray-700 mb-2">{post.description}</p>
+              <p className="text-gray-700 mb-2">{post.description.slice(0, 200)}...</p>
               <div className="flex items-center justify-between text-sm text-gray-500">
                 <span className="badge badge-info">{post.tag}</span>
                 <span>Votes: {totalVote}</span>
